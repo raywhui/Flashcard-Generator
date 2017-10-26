@@ -18,13 +18,13 @@ ClozeCard.prototype.partial = function(){
 	var checkIfExists = this.fullText.indexOf(this.cloze);
 
 	//this assumes that the cloze text only occurs once in the fullText string.
-	//First condition, if the cloze word exists in the middle of the fullText string.
+	//First condition, if the cloze word exists at the beginning or end of fullText string.
 	if (index !== -1){
 		splitFull.splice(index,1,'...');
 
 		return splitFull.join('');
 
-	//Second condition, if the cloze word exists at the beginning or end of fullText string.
+	//Second condition, if the cloze word exists in the middle of the fullText string.
 	}else if (index === -1 && checkIfExists !== -1){
 		splitFull.splice(1,0,'...');
 
@@ -38,22 +38,21 @@ ClozeCard.prototype.partial = function(){
 };
 
 //First condition
-var my = ClozeCard("First president George Washington of the United States.", "George Washington");
 
-console.log('Cloze:', my.cloze);
-console.log('Full Text:', my.fullText);
-console.log('Partial:', my.partial());
-
-
-console.log('\n======================================================\n');
-
-//Second Condition
 var dude = ClozeCard("George Washington was the first president of the United States.", "George Washington");
 
 console.log('Cloze:', dude.cloze);
 console.log('Full Text:', dude.fullText);
 console.log('Partial:', dude.partial());
 
+console.log('\n======================================================\n');
+
+//Second Condition
+var my = ClozeCard("First president George Washington of the United States.", "George Washington");
+
+console.log('Cloze:', my.cloze);
+console.log('Full Text:', my.fullText);
+console.log('Partial:', my.partial());
 
 console.log('\n======================================================\n');
 
